@@ -1,0 +1,7 @@
+<database>
+	<dbms>SQL_SERVER</dbms>  <!-- Banco escolhido - valores aceitos: SQL_SERVER, POSTGRESQL, ORACLE -->
+	<url>localhost</url>  <!-- Endereco e porta do servidor - ex: localhost:porta, http://192.168.0.0:porta.. -->
+	<database>DatabaseName</database> <!-- nome do banco -->
+	<user>Isaias</user> <!-- usuario do banco -->
+	<password>Santos</password> <!-- senha do banco -->
+</database>
