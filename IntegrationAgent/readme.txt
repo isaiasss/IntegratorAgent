@@ -19,7 +19,7 @@ Dependências
 -Gson
 -Apache Log4J
 -Driver JDBC
--Java JRE mínimo 1.6 / Java 6
+-Java JRE 1.8 / Java 8
 
 Configuração
 
