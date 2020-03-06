@@ -10,6 +10,8 @@ public class DBConfigDTO {
 	private String database;
 	private String user;
 	private String password;
+	private String custom_url;
+	private String custom_class;
 
 	public String getDbms() {
 		return dbms;
@@ -49,6 +51,22 @@ public class DBConfigDTO {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getCustom_url() {
+		return custom_url;
+	}
+
+	public void setCustom_url(String custom_url) {
+		this.custom_url = custom_url;
+	}
+
+	public String getCustom_class() {
+		return custom_class;
+	}
+
+	public void setCustom_class(String custom_class) {
+		this.custom_class = custom_class;
 	}
 
 }

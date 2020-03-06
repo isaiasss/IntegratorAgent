@@ -1,7 +1,15 @@
 <database>
-	<dbms>SQL_SERVER</dbms>  <!-- Banco escolhido - valores aceitos: SQL_SERVER, POSTGRESQL, ORACLE -->
+	<dbms>SQL_SERVER</dbms>  <!-- Banco escolhido - valores aceitos: SQL_SERVER, CUSTOM, POSTGRESQL, ORACLE -->
 	<url>localhost</url>  <!-- Endereco e porta do servidor - ex: localhost:porta, http://192.168.0.0:porta.. -->
 	<database>DatabaseName</database> <!-- nome do banco -->
 	<user>Isaias</user> <!-- usuario do banco -->
 	<password>Santos</password> <!-- senha do banco -->
+	<custom_url>
+		myjdbc:mydb:port
+	</password> <!-- senha do banco -->
+		<custom_class>org.myjdbc.DriverClass</custom_class>
 </database>
+
+<!-- maven sql server -->
+<!-- <dependency> <groupId>com.microsoft.sqlserver</groupId> <artifactId>mssql-jdbc</artifactId> 
+	<version>6.1.0.jre8</version> </dependency> -->

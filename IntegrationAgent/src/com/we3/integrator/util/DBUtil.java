@@ -11,6 +11,7 @@ public class DBUtil {
 	private static final String SQL_SERVER = "SQL_SERVER";
 	private static final String POSTGRESQL = "POSTGRESQL";
 	private static final String ORACLE = "ORACLE";
+	private static final String CUSTOM = "CUSTOM";
 
 	public static Connection getConnection(DBConfigDTO dbConfig) throws ClassNotFoundException, SQLException {
 		switch (dbConfig.getDbms()) {
@@ -20,6 +21,8 @@ public class DBUtil {
 			return getPostgreSQLConn(dbConfig);
 		case ORACLE:
 			return getOracleConn(dbConfig);
+		case CUSTOM:
+			return getCustomConn(dbConfig);
 		default:
 			return getPostgreSQLConn(dbConfig);
 		}
@@ -48,6 +51,14 @@ public class DBUtil {
 
 		Connection conn = DriverManager.getConnection(url, dbConfig.getUser(), dbConfig.getPassword());
 		return conn;
+	}
+
+	private static Connection getCustomConn(DBConfigDTO dbConfig) throws ClassNotFoundException, SQLException {
+		String url = dbConfig.getCustom_url();
+		Class.forName(dbConfig.getCustom_class());
+
+		Connection con = DriverManager.getConnection(url);
+		return con;
 	}
 
 }

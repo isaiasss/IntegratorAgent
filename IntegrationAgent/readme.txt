@@ -1,29 +1,24 @@
 Instalação
 
 1-Realizar checkout deste projeto
-2-Carregar as dependências (Gson e Log4J) através do Maven
-3-Configurar os arquivos de configuração (db_config.xml e integration.xml)
-4-Adicionar o JDBC do banco de dados escolhido:
--- SQL_SERVER (https://docs.microsoft.com/pt-br/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-ver15)
--- PostgreSQL (https://jdbc.postgresql.org/download.html)
--- Oracle (https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html)
-5-Rodar a classe Main (com.we3.integrador.Main) através de comando ou iniciar como serviço
+2-Configurar os arquivos de configuração (db_config.xml e integration.xml)
+3-Rodar a classe Main (com.we3.integrador.Main)
 
 Processo
 
-* Cada query executada, os valores lidos serão enviados para a API configurada
-* Logs serão gerados em cada execução ficando no arquivo app.log
+-Cada query executada, os valores lidos serão enviados para a API configurada
+-Logs serão gerados em cada execução ficando no arquivo app.log
 
-Dependências
+Dependências Maven
 
 -Gson
 -Apache Log4J
 -Driver JDBC
--Java JRE 1.8 / Java 8
+-Java JRE JDK 8
 
 Configuração
 
-Exemplo de arquivo integration.xml:
+Exemplo integration.xml:
 
 <integration>
 	<procedure>
@@ -49,7 +44,7 @@ Exemplo de arquivo integration.xml:
 </integration>
 
 
-Exemplo de arquivo db_config.xml:
+Exemplo db_config.xml:
 
 <database>
 	<dbms>SQL_SERVER</dbms>  <!-- Banco escolhido - valores aceitos: SQL_SERVER, POSTGRESQL, ORACLE -->
