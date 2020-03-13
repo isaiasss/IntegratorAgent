@@ -5,11 +5,8 @@
 	<user>Isaias</user> <!-- usuario do banco -->
 	<password>Santos</password> <!-- senha do banco -->
 	<custom_url>
-		myjdbc:mydb:port
-	</password> <!-- senha do banco -->
-		<custom_class>org.myjdbc.DriverClass</custom_class>
+		myjdbc:mydb:port <!-- caso seja alguma outra forma de autenticacao, exemplo sqlserver com autenticacao windows -->
+	</custom_url> <!-- senha do banco -->
+		<custom_class>org.myjdbc.DriverClass</custom_class> 
 </database>
 
-<!-- maven sql server -->
-<!-- <dependency> <groupId>com.microsoft.sqlserver</groupId> <artifactId>mssql-jdbc</artifactId> 
-	<version>6.1.0.jre8</version> </dependency> -->
