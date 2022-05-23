@@ -64,7 +64,7 @@ public class Main {
 		}
 
 		for (final ProcedureDTO proc : integration.getProcedure()) {
-			long seconds = new Long(proc.getTime()) * 1000;
+			long seconds = Long.valueOf(proc.getTime()) * 1000;
 
 			log.trace("iniciando objeto processo de código " + proc.getCode());
 			final ExecProcedure exec = new ExecProcedure(proc, dbConfig);

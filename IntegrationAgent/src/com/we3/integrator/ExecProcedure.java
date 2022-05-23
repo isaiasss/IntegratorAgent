@@ -37,6 +37,15 @@ public class ExecProcedure {
 
 	public void execute() throws SQLException, Exception {
 
+		log.trace("carregando registros do banco");
+		ArrayList<HashMap<String, Object>> values = loadingValuesFromDatabase();
+
+		log.trace("enviando para api");
+		sendValuesToServer(values);
+	}
+
+	private ArrayList<HashMap<String, Object>> loadingValuesFromDatabase()
+			throws ClassNotFoundException, SQLException, Exception {
 		Connection con = DBUtil.getConnection(dbConfig);
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -88,9 +97,7 @@ public class ExecProcedure {
 				}
 			}
 		}
-
-		log.trace("enviando para api");
-		sendValuesToServer(values);
+		return values;
 	}
 
 	private void sendValuesToServer(ArrayList<HashMap<String, Object>> values) throws Exception {
@@ -112,6 +119,7 @@ public class ExecProcedure {
 			connection.setRequestMethod("POST");
 			connection.setRequestProperty("Content-Type", "application/json");
 			connection.setRequestProperty("x-api-token", proc.getToken());
+			connection.setRequestProperty("User-Agent", "My own REST client");
 
 			os = connection.getOutputStream();
 			os.write(content.getBytes("UTF-8"));
