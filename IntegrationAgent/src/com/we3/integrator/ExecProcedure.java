@@ -50,7 +50,7 @@ public class ExecProcedure {
 		Statement stmt = null;
 		ResultSet rs = null;
 
-		ArrayList<HashMap<String, Object>> values;
+		ArrayList<HashMap<String, Object>> values = null;
 
 		try {
 			String sql = proc.getQuery();
@@ -76,7 +76,6 @@ public class ExecProcedure {
 
 		} catch (Exception e) {
 			log.error("erro na execucao da query. processo de codigo " + proc.getCode(), e);
-			throw e;
 		} finally {
 			if (rs != null) {
 				try {
@@ -100,7 +99,7 @@ public class ExecProcedure {
 		return values;
 	}
 
-	private void sendValuesToServer(ArrayList<HashMap<String, Object>> values) throws Exception {
+	private void sendValuesToServer(ArrayList<HashMap<String, Object>> values) {
 		SendRequestDTO request = new SendRequestDTO();
 		request.setValues(values);
 		request.setCode(proc.getCode());
@@ -120,6 +119,8 @@ public class ExecProcedure {
 			connection.setRequestProperty("Content-Type", "application/json");
 			connection.setRequestProperty("x-api-token", proc.getToken());
 			connection.setRequestProperty("User-Agent", "My own REST client");
+			connection.setConnectTimeout(60000);
+			connection.setReadTimeout(120000);
 
 			os = connection.getOutputStream();
 			os.write(content.getBytes("UTF-8"));
@@ -146,7 +147,6 @@ public class ExecProcedure {
 			log.trace("retorno api: " + sbResp.toString());
 		} catch (Exception e) {
 			log.error("erro envio api: ", e);
-			throw e;
 		} finally {
 			if (os != null) {
 				try {

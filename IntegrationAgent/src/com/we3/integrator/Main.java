@@ -19,10 +19,13 @@ import com.we3.integrator.util.XMLReader;
 
 public class Main {
 
+	private final static String VERSION = "1.01";
+	
 	private static Logger log = LogManager.getLogger(Main.class.getName());
 
 	public static void main(String[] args) {
 
+		log.trace("Integration Agent v" + VERSION);
 		log.trace("lendo configuracoes do banco...");
 		DBConfigDTO dbConfig = null;
 
